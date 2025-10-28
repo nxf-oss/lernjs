@@ -23,19 +23,17 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        working-directory: lernjs
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
       - name: Build TypeScript custom script
-        working-directory: lernjs/script
+        working-directory: script
         run: |
           npm install typescript --save-dev
           npx tsc
 
       - name: Build Sphinx documentation
-        working-directory: lernjs
         run: |
           make html
           touch _build/html/.nojekyll
@@ -43,7 +41,7 @@ jobs:
       - name: Upload build artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: lernjs/_build/html
+          path: _build/html
 
   deploy:
     needs: build
