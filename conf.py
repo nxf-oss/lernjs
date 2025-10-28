@@ -5,7 +5,6 @@ from datetime import datetime
 from pathlib import Path
 
 sys.path.insert(0, os.path.abspath("."))
-sys.path.insert(0, os.path.abspath("../src"))
 project = "lernjs"
 copyright = f"{datetime.now().year}, nxf-oss"
 author = "nxf-oss"
@@ -64,8 +63,8 @@ exclude_patterns = [
 include_patterns = ["**"]
 html_theme = "sphinx_book_theme"
 html_theme_options = {
-    "repository_url": "https://github.com/username/repo",
-    "repository_branch": "main",
+    "repository_url": "https://github.com/nxf-oss/lernjs",
+    "repository_branch": "master",
     "path_to_docs": ".",
     "use_repository_button": True,
     "use_issues_button": True,
@@ -78,8 +77,7 @@ html_theme_options = {
 }
 html_title = f"{project} v{version}"
 html_short_title = f"{project}"
-html_logo = "_static/_logo.png"
-html_favicon = "_static/_favicon.ico"
+html_favicon = "_static/_favicon.svg"
 html_static_path = ["_static"]
 html_js_files = [
     "index.js",
@@ -124,12 +122,12 @@ intersphinx_mapping = {
 }
 todo_include_todos = True
 todo_link_only = True
-github_username = "username_anda"
-github_repository = "nama-repository"
+github_username = "nxf-oss"
+github_repository = "lernjs"
 github_branch = "main"
 copybutton_prompt_text = r">>> |\.\.\. |\$ |In \[\d*\]: | {2,5}\.\.\.: | {5,8}: "
 copybutton_prompt_is_regexp = True
-ogp_site_url = "https://username.github.io/repository/"
+ogp_site_url = "https://nxf-oss.github.io/lernjs"
 ogp_image = "_static/og-image.png"
 ogp_description_length = 200
 ogp_type = "website"
@@ -145,10 +143,6 @@ rst_prolog = """
 )
 math_numfig = True
 math_eqref_format = "Eq. {number}"
-linkcheck_ignore = [
-    r"http://localhost:\d+/",
-    r"https://example.com/",
-]
 linkcheck_retries = 3
 linkcheck_timeout = 30
 smartquotes = True
@@ -158,12 +152,10 @@ suppress_warnings = [
 ]
 numfig = True
 numfig_format = {
-    "figure": "Gambar %s",
-    "table": "Tabel %s",
+    "figure": "Figure %s",
+    "table": "Table %s",
     "code-block": "Listing %s",
-    "section": "Bagian %s",
+    "section": "Section %s",
 }
-
-
 def setup(app):
     app.add_js_file("index.js")
