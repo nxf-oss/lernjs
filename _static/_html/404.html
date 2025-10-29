@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,6 +37,7 @@
       --gradient-accent: linear-gradient(135deg, var(--gray-800) 0%, var(--black) 100%);
       --gradient-subtle: linear-gradient(135deg, var(--white) 0%, var(--gray-100) 100%);
     }
+
     .dark-mode {
       --text-primary: var(--white);
       --text-secondary: var(--gray-300);
@@ -55,11 +57,13 @@
       --gradient-accent: linear-gradient(135deg, var(--gray-300) 0%, var(--white) 100%);
       --gradient-subtle: linear-gradient(135deg, var(--gray-800) 0%, var(--gray-900) 100%);
     }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
       font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
       background: var(--gradient-primary);
@@ -73,6 +77,7 @@
       line-height: 1.6;
       font-weight: 400;
     }
+
     .particles-container {
       position: absolute;
       top: 0;
@@ -83,6 +88,7 @@
       z-index: 1;
       overflow: hidden;
     }
+
     .particle {
       position: absolute;
       border-radius: 50%;
@@ -91,9 +97,11 @@
       opacity: 0.6;
       background: var(--text-tertiary);
     }
+
     .particle.square {
       border-radius: 2px;
     }
+
     .particle.triangle {
       width: 0;
       height: 0;
@@ -103,16 +111,19 @@
       border-bottom: 8px solid var(--text-tertiary);
       border-radius: 0;
     }
+
     @keyframes float {
       0% {
         transform: translateY(0) rotate(0deg);
         opacity: 0.6;
       }
+
       100% {
         transform: translateY(100vh) rotate(360deg);
         opacity: 0;
       }
     }
+
     .container {
       max-width: 1400px;
       margin: 0 auto;
@@ -120,6 +131,7 @@
       position: relative;
       z-index: 2;
     }
+
     .error-content {
       background: var(--bg-primary);
       border-radius: 24px;
@@ -131,6 +143,7 @@
       position: relative;
       overflow: hidden;
     }
+
     .error-content::before {
       content: '';
       position: absolute;
@@ -140,6 +153,7 @@
       height: 3px;
       background: var(--gradient-accent);
     }
+
     .error-code {
       font-size: 8rem;
       font-weight: 900;
@@ -152,6 +166,7 @@
       letter-spacing: -0.02em;
       font-family: 'Inter', sans-serif;
     }
+
     .error-title {
       font-size: 2.5rem;
       font-weight: 700;
@@ -160,6 +175,7 @@
       line-height: 1.2;
       letter-spacing: -0.01em;
     }
+
     .error-description {
       font-size: 1.25rem;
       color: var(--text-secondary);
@@ -170,6 +186,7 @@
       margin-right: auto;
       font-weight: 400;
     }
+
     .typewriter-container {
       min-height: 3rem;
       margin-bottom: 3rem;
@@ -177,6 +194,7 @@
       align-items: center;
       justify-content: center;
     }
+
     .typewriter-text {
       font-size: 1.5rem;
       font-weight: 600;
@@ -186,31 +204,38 @@
       animation: blink 1s infinite;
       font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
     }
+
     @keyframes blink {
+
       0%,
       50% {
         border-color: var(--accent);
       }
+
       51%,
       100% {
         border-color: transparent;
       }
     }
+
     .illustration-container {
       margin: 3rem 0;
       position: relative;
     }
+
     .floating-illustration {
       max-width: 400px;
       margin: 0 auto;
       filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.1));
     }
+
     .actions-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
       margin-bottom: 3rem;
     }
+
     .action-card {
       background: var(--bg-secondary);
       padding: 2.5rem 2rem;
@@ -222,6 +247,7 @@
       position: relative;
       overflow: hidden;
     }
+
     .action-card::before {
       content: '';
       position: absolute;
@@ -233,20 +259,24 @@
       opacity: 0.05;
       transition: left 0.3s ease;
     }
+
     .action-card:hover {
       transform: translateY(-8px);
       box-shadow: var(--shadow-lg);
       border-color: var(--accent-light);
     }
+
     .action-card:hover::before {
       left: 0;
     }
+
     .action-icon {
       font-size: 3rem;
       margin-bottom: 1.5rem;
       display: block;
       opacity: 0.9;
     }
+
     .action-title {
       font-size: 1.3rem;
       font-weight: 700;
@@ -255,6 +285,7 @@
       position: relative;
       z-index: 2;
     }
+
     .action-description {
       color: var(--text-secondary);
       line-height: 1.6;
@@ -262,6 +293,7 @@
       z-index: 2;
       font-size: 1rem;
     }
+
     .theme-toggle {
       position: fixed;
       top: 2rem;
@@ -280,10 +312,12 @@
       z-index: 1000;
       font-size: 1.3rem;
     }
+
     .theme-toggle:hover {
       transform: scale(1.1);
       box-shadow: var(--shadow-xl);
     }
+
     .footer-note {
       font-size: 1.1rem;
       color: var(--text-secondary);
@@ -293,12 +327,14 @@
       border-top: 1px solid var(--border);
       font-weight: 500;
     }
+
     @keyframes ripple {
       to {
         transform: scale(4);
         opacity: 0;
       }
     }
+
     .ripple {
       position: absolute;
       border-radius: 50%;
@@ -307,65 +343,82 @@
       pointer-events: none;
       z-index: 9999;
     }
+
     @media (max-width: 1024px) {
       .error-code {
         font-size: 6rem;
       }
+
       .error-title {
         font-size: 2rem;
       }
+
       .error-content {
         padding: 3rem 2.5rem;
       }
     }
+
     @media (max-width: 768px) {
       .error-code {
         font-size: 5rem;
       }
+
       .error-title {
         font-size: 1.75rem;
       }
+
       .error-description {
         font-size: 1.1rem;
       }
+
       .error-content {
         padding: 2.5rem 2rem;
       }
+
       .actions-grid {
         grid-template-columns: 1fr;
         gap: 1.25rem;
       }
+
       .theme-toggle {
         top: 1.5rem;
         right: 1.5rem;
       }
+
       .container {
         padding: 1.5rem;
       }
     }
+
     @media (max-width: 480px) {
       .error-code {
         font-size: 4rem;
       }
+
       .error-title {
         font-size: 1.5rem;
       }
+
       .error-description {
         font-size: 1rem;
       }
+
       .error-content {
         padding: 2rem 1.5rem;
         border-radius: 20px;
       }
+
       .action-card {
         padding: 2rem 1.5rem;
       }
+
       .typewriter-text {
         font-size: 1.2rem;
       }
     }
   </style>
 </head>
+
 <body>
   <div class="particles-container"></div>
   <button class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
@@ -386,20 +439,15 @@
         </div>
       </div>
       <div class="actions-grid">
-        <a href="/" class="action-card">
+        <a href="https://nxf-oss.github.io/lernjs/index.html" class="action-card">
           <div class="action-icon">🚀</div>
           <h3 class="action-title">Back to Home</h3>
           <p class="action-description">Start your adventure from the beginning with the right guidance</p>
         </a>
-        <a href="/docs" class="action-card">
+        <a href="https://nxf-oss.github.io/lernjs/_pages/_lang/_en/._site-map.html" class="action-card">
           <div class="action-icon">🔍</div>
           <h3 class="action-title">Explore Documentation</h3>
           <p class="action-description">Find complete solutions and guides in our documentation</p>
-        </a>
-        <a href="/examples" class="action-card">
-          <div class="action-icon">💫</div>
-          <h3 class="action-title">See Examples</h3>
-          <p class="action-description">Learn from code samples and implementations</p>
         </a>
         <a href="https://github.com/nxf-oss/lernjs" class="action-card">
           <div class="action-icon">⭐</div>
@@ -838,4 +886,5 @@
     });
   </script>
 </body>
+
 </html>
