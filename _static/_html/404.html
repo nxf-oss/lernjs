@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Page Not Found</title>
+  <style>
+    :root {
+      --white: #ffffff;
+      --black: #000000;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-400: #9ca3af;
+      --gray-500: #6b7280;
+      --gray-600: #4b5563;
+      --gray-700: #374151;
+      --gray-800: #1f2937;
+      --gray-900: #111827;
+      --text-primary: var(--gray-900);
+      --text-secondary: var(--gray-600);
+      --text-tertiary: var(--gray-400);
+      --bg-primary: var(--white);
+      --bg-secondary: var(--gray-50);
+      --bg-tertiary: var(--gray-100);
+      --border: var(--gray-200);
+      --accent: var(--gray-800);
+      --accent-light: var(--gray-600);
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      --gradient-primary: linear-gradient(135deg, var(--gray-100) 0%, var(--gray-300) 100%);
+      --gradient-accent: linear-gradient(135deg, var(--gray-800) 0%, var(--black) 100%);
+      --gradient-subtle: linear-gradient(135deg, var(--white) 0%, var(--gray-100) 100%);
+    }
+    .dark-mode {
+      --text-primary: var(--white);
+      --text-secondary: var(--gray-300);
+      --text-tertiary: var(--gray-500);
+      --bg-primary: var(--gray-900);
+      --bg-secondary: var(--gray-800);
+      --bg-tertiary: var(--gray-700);
+      --border: var(--gray-600);
+      --accent: var(--white);
+      --accent-light: var(--gray-300);
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+      --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+      --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      --gradient-primary: linear-gradient(135deg, var(--gray-800) 0%, var(--gray-600) 100%);
+      --gradient-accent: linear-gradient(135deg, var(--gray-300) 0%, var(--white) 100%);
+      --gradient-subtle: linear-gradient(135deg, var(--gray-800) 0%, var(--gray-900) 100%);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--gradient-primary);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-primary);
+      overflow-x: hidden;
+      position: relative;
+      line-height: 1.6;
+      font-weight: 400;
+    }
+    .particles-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      animation: float linear infinite;
+      top: -20px;
+      opacity: 0.6;
+      background: var(--text-tertiary);
+    }
+    .particle.square {
+      border-radius: 2px;
+    }
+    .particle.triangle {
+      width: 0;
+      height: 0;
+      background: transparent;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-bottom: 8px solid var(--text-tertiary);
+      border-radius: 0;
+    }
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+      position: relative;
+      z-index: 2;
+    }
+    .error-content {
+      background: var(--bg-primary);
+      border-radius: 24px;
+      padding: 4rem 3rem;
+      text-align: center;
+      box-shadow: var(--shadow-xl);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .error-content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--gradient-accent);
+    }
+    .error-code {
+      font-size: 8rem;
+      font-weight: 900;
+      background: var(--gradient-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      font-family: 'Inter', sans-serif;
+    }
+    .error-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+    .error-description {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      margin-bottom: 3rem;
+      line-height: 1.7;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 400;
+    }
+    .typewriter-container {
+      min-height: 3rem;
+      margin-bottom: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .typewriter-text {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--accent);
+      border-right: 2px solid var(--accent);
+      padding-right: 6px;
+      animation: blink 1s infinite;
+      font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+    }
+    @keyframes blink {
+      0%,
+      50% {
+        border-color: var(--accent);
+      }
+      51%,
+      100% {
+        border-color: transparent;
+      }
+    }
+    .illustration-container {
+      margin: 3rem 0;
+      position: relative;
+    }
+    .floating-illustration {
+      max-width: 400px;
+      margin: 0 auto;
+      filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.1));
+    }
+    .actions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .action-card {
+      background: var(--bg-secondary);
+      padding: 2.5rem 2rem;
+      border-radius: 16px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .action-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient-accent);
+      opacity: 0.05;
+      transition: left 0.3s ease;
+    }
+    .action-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--accent-light);
+    }
+    .action-card:hover::before {
+      left: 0;
+    }
+    .action-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      display: block;
+      opacity: 0.9;
+    }
+    .action-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+      position: relative;
+      z-index: 2;
+    }
+    .action-description {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      position: relative;
+      z-index: 2;
+      font-size: 1rem;
+    }
+    .theme-toggle {
+      position: fixed;
+      top: 2rem;
+      right: 2rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      width: 3.5rem;
+      height: 3.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: var(--shadow-lg);
+      transition: all 0.3s ease;
+      z-index: 1000;
+      font-size: 1.3rem;
+    }
+    .theme-toggle:hover {
+      transform: scale(1.1);
+      box-shadow: var(--shadow-xl);
+    }
+    .footer-note {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      font-style: italic;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      font-weight: 500;
+    }
+    @keyframes ripple {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      transform: scale(0);
+      animation: ripple 600ms linear;
+      pointer-events: none;
+      z-index: 9999;
+    }
+    @media (max-width: 1024px) {
+      .error-code {
+        font-size: 6rem;
+      }
+      .error-title {
+        font-size: 2rem;
+      }
+      .error-content {
+        padding: 3rem 2.5rem;
+      }
+    }
+    @media (max-width: 768px) {
+      .error-code {
+        font-size: 5rem;
+      }
+      .error-title {
+        font-size: 1.75rem;
+      }
+      .error-description {
+        font-size: 1.1rem;
+      }
+      .error-content {
+        padding: 2.5rem 2rem;
+      }
+      .actions-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+      .theme-toggle {
+        top: 1.5rem;
+        right: 1.5rem;
+      }
+      .container {
+        padding: 1.5rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .error-code {
+        font-size: 4rem;
+      }
+      .error-title {
+        font-size: 1.5rem;
+      }
+      .error-description {
+        font-size: 1rem;
+      }
+      .error-content {
+        padding: 2rem 1.5rem;
+        border-radius: 20px;
+      }
+      .action-card {
+        padding: 2rem 1.5rem;
+      }
+      .typewriter-text {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="particles-container"></div>
+  <button class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+  <div class="container">
+    <div class="error-content">
+      <div class="error-code">404</div>
+      <h1 class="error-title">Oops! Page Not Found</h1>
+      <p class="error-description">
+        It seems the page you are looking for has vanished into a digital black hole or is exploring a parallel
+        universe.
+        Don't worry, we can find our way back together!
+      </p>
+      <div class="typewriter-container">
+        <span class="typewriter-text"></span>
+      </div>
+      <div class="illustration-container">
+        <div class="floating-illustration">
+        </div>
+      </div>
+      <div class="actions-grid">
+        <a href="/" class="action-card">
+          <div class="action-icon">🚀</div>
+          <h3 class="action-title">Back to Home</h3>
+          <p class="action-description">Start your adventure from the beginning with the right guidance</p>
+        </a>
+        <a href="/docs" class="action-card">
+          <div class="action-icon">🔍</div>
+          <h3 class="action-title">Explore Documentation</h3>
+          <p class="action-description">Find complete solutions and guides in our documentation</p>
+        </a>
+        <a href="/examples" class="action-card">
+          <div class="action-icon">💫</div>
+          <h3 class="action-title">See Examples</h3>
+          <p class="action-description">Learn from code samples and implementations</p>
+        </a>
+        <a href="https://github.com/nxf-oss/lernjs" class="action-card">
+          <div class="action-icon">⭐</div>
+          <h3 class="action-title">GitHub Repository</h3>
+          <p class="action-description">Contribute or explore the source code on GitHub</p>
+        </a>
+      </div>
+      <p class="footer-note">
+        Every wrong path is a new lesson towards the right solution. Keep exploring!
+      </p>
+    </div>
+  </div>
+  <script>
+    class DOM {
+      static createElement(tag, classes, attributes = {}) {
+        const element = document.createElement(tag);
+        if (classes) {
+          this.addClasses(element, classes);
+        }
+        for (const [key, value] of Object.entries(attributes)) {
+          element.setAttribute(key, value);
+        }
+        return element;
+      }
+      static addClasses(element, classes) {
+        if (typeof classes === 'string') {
+          element.classList.add(classes);
+        } else if (Array.isArray(classes)) {
+          element.classList.add(...classes);
+        } else {
+          for (const [className, shouldAdd] of Object.entries(classes)) {
+            if (shouldAdd) {
+              element.classList.add(className);
+            }
+          }
+        }
+      }
+      static setStyles(element, styles) {
+        for (const [property, value] of Object.entries(styles)) {
+          element.style[property] = value;
+        }
+      }
+      static waitFor(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+      static onVisible(element, callback) {
+        const observer = new IntersectionObserver(entries => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              callback();
+              observer.unobserve(element);
+            }
+          }
+        });
+        observer.observe(element);
+      }
+    }
+    class FloatingAnimation {
+      constructor(amplitude = 12, speed = 1.8, rotationIntensity = 2) {
+        this.amplitude = amplitude;
+        this.speed = speed;
+        this.rotationIntensity = rotationIntensity;
+        this.elements = [];
+        this.isRunning = false;
+        this.animationId = null;
+      }
+      addElement(element) {
+        if (!this.elements.includes(element)) {
+          this.elements.push(element);
+        }
+      }
+      removeElement(element) {
+        const index = this.elements.indexOf(element);
+        if (index > -1) {
+          this.elements.splice(index, 1);
+        }
+      }
+      start() {
+        if (this.isRunning) return;
+        this.isRunning = true;
+        this.animate();
+      }
+      stop() {
+        this.isRunning = false;
+        if (this.animationId !== null) {
+          cancelAnimationFrame(this.animationId);
+          this.animationId = null;
+        }
+        this.elements.forEach(element => {
+          DOM.setStyles(element, {
+            transform: 'translateY(0px) rotate(0deg)',
+          });
+        });
+      }
+      animate() {
+        if (!this.isRunning) return;
+        const time = performance.now() * 0.001;
+        this.elements.forEach((element, index) => {
+          try {
+            const offset = (index * Math.PI * 2) / this.elements.length;
+            const y = Math.sin(time * this.speed + offset) * this.amplitude;
+            const x = Math.cos(time * this.speed * 0.7 + offset) * (this.amplitude * 0.3);
+            const rotation = Math.sin(time * 0.5 + offset) * this.rotationIntensity;
+            DOM.setStyles(element, {
+              transform: `translate3d(${x}px, ${y}px, 0) rotate(${rotation}deg)`,
+              transition: 'transform 0.1s linear',
+            });
+          } catch (error) {
+            console.warn('Error animating element:', error);
+          }
+        });
+        this.animationId = requestAnimationFrame(() => this.animate());
+      }
+      destroy() {
+        this.stop();
+        this.elements = [];
+      }
+    }
+    class ParticleSystem {
+      constructor(container) {
+        this.container = container;
+        this.particles = [];
+        this.isRunning = false;
+        this.timeoutId = null;
+        this.particleShapes = ['circle', 'square', 'triangle'];
+      }
+      start() {
+        if (this.isRunning) return;
+        this.isRunning = true;
+        this.createParticles();
+      }
+      stop() {
+        this.isRunning = false;
+        if (this.timeoutId !== null) {
+          clearTimeout(this.timeoutId);
+          this.timeoutId = null;
+        }
+        this.particles.forEach(particle => {
+          particle.style.animationPlayState = 'paused';
+          particle.remove();
+        });
+        this.particles = [];
+      }
+      createParticles() {
+        if (!this.isRunning) return;
+        const particleCount = Math.floor(Math.random() * 2) + 3;
+        for (let i = 0; i < particleCount; i++) {
+          setTimeout(() => {
+            if (this.isRunning) this.createParticle();
+          }, i * 200);
+        }
+        this.timeoutId = window.setTimeout(() => {
+          this.createParticles();
+        }, 1800 + Math.random() * 500);
+      }
+      createParticle() {
+        try {
+          const particle = DOM.createElement('div', 'particle', {
+            'aria-hidden': 'true',
+          });
+          const size = Math.random() * 6 + 2;
+          const startX = Math.random() * 100;
+          const duration = Math.random() * 3 + 2;
+          const delay = Math.random() * 1;
+          const shape = this.particleShapes[Math.floor(Math.random() * this.particleShapes.length)];
+          DOM.setStyles(particle, {
+            width: `${size}px`,
+            height: `${size}px`,
+            left: `${startX}%`,
+            animationDuration: `${duration}s`,
+            animationDelay: `${delay}s`,
+            opacity: '0.7',
+          });
+          switch (shape) {
+            case 'square':
+              DOM.setStyles(particle, {
+                borderRadius: '2px',
+                background: 'currentColor',
+              });
+              break;
+            case 'triangle':
+              DOM.setStyles(particle, {
+                width: '0px',
+                height: '0px',
+                background: 'transparent',
+                borderLeft: `${size / 2}px solid transparent`,
+                borderRight: `${size / 2}px solid transparent`,
+                borderBottom: `${size}px solid currentColor`,
+              });
+              break;
+            case 'circle':
+            default:
+              DOM.setStyles(particle, {
+                borderRadius: '50%',
+                background: 'currentColor',
+              });
+          }
+          this.container.appendChild(particle);
+          this.particles.push(particle);
+          const removeTime = (duration + delay) * 1000;
+          setTimeout(() => {
+            if (particle.parentNode) {
+              particle.remove();
+            }
+            this.particles = this.particles.filter(p => p !== particle);
+          }, removeTime);
+        } catch (error) {
+          console.error('Error creating particle:', error);
+        }
+      }
+      destroy() {
+        this.stop();
+      }
+    }
+    class TypewriterEffect {
+      constructor(element, texts, typingSpeed = 85, deletingSpeed = 45, pauseTime = 1800, startDelay = 500) {
+        this.element = element;
+        this.texts = texts;
+        this.typingSpeed = typingSpeed;
+        this.deletingSpeed = deletingSpeed;
+        this.pauseTime = pauseTime;
+        this.startDelay = startDelay;
+        this.currentText = '';
+        this.currentIndex = 0;
+        this.isDeleting = false;
+        this.isPaused = false;
+        this.timeoutId = null;
+        this.cursorChar = '▊';
+      }
+      start() {
+        if (!this.element || !Array.isArray(this.texts) || this.texts.length === 0) {
+          console.warn('TypewriterEffect: Invalid element or texts');
+          return;
+        }
+        this.isPaused = false;
+        setTimeout(() => {
+          if (!this.isPaused) this.type();
+        }, this.startDelay);
+      }
+      stop() {
+        this.isPaused = true;
+        if (this.timeoutId !== null) {
+          clearTimeout(this.timeoutId);
+          this.timeoutId = null;
+        }
+      }
+      type() {
+        if (this.isPaused) return;
+        const currentText = this.texts[this.currentIndex];
+        if (!currentText) {
+          console.warn('TypewriterEffect: No text available at index', this.currentIndex);
+          return;
+        }
+        const shouldType = !this.isDeleting && this.currentText.length < currentText.length;
+        const shouldDelete = this.isDeleting && this.currentText.length > 0;
+        const shouldSwitch = this.isDeleting && this.currentText.length === 0;
+        if (shouldType) {
+          this.currentText = currentText.substring(0, this.currentText.length + 1);
+        } else if (shouldDelete) {
+          this.currentText = currentText.substring(0, this.currentText.length - 1);
+        } else if (shouldSwitch) {
+          this.isDeleting = false;
+          this.currentIndex = (this.currentIndex + 1) % this.texts.length;
+          this.timeoutId = window.setTimeout(() => this.type(), 400);
+          return;
+        } else {
+          this.isDeleting = true;
+          this.timeoutId = window.setTimeout(() => this.type(), this.pauseTime);
+          return;
+        }
+        this.element.textContent = this.currentText + this.cursorChar;
+        const speed = this.isDeleting ? this.deletingSpeed : this.typingSpeed;
+        const variedSpeed = speed + (Math.random() * 20 - 10);
+        this.timeoutId = window.setTimeout(() => this.type(), Math.max(variedSpeed, 30));
+      }
+      destroy() {
+        this.stop();
+        this.element.textContent = '';
+      }
+    }
+    class RippleEffect {
+      constructor(container) {
+        this.container = container;
+        this.rippleClass = 'ripple';
+        this.rippleDuration = 600;
+      }
+      createRipple(x, y, color = 'rgba(255, 255, 255, 0.6)') {
+        try {
+          const ripple = DOM.createElement('div', this.rippleClass);
+          const size = Math.max(this.container.offsetWidth, this.container.offsetHeight) * 0.1;
+          DOM.setStyles(ripple, {
+            position: 'absolute',
+            left: `${x - size / 2}px`,
+            top: `${y - size / 2}px`,
+            width: `${size}px`,
+            height: `${size}px`,
+            background: color,
+            borderRadius: '50%',
+            transform: 'scale(0)',
+            animation: `ripple ${this.rippleDuration}ms linear`,
+            pointerEvents: 'none',
+            zIndex: '9999',
+          });
+          this.container.appendChild(ripple);
+          setTimeout(() => {
+            if (ripple.parentNode) {
+              ripple.remove();
+            }
+          }, this.rippleDuration);
+        } catch (error) {
+          console.error('Error creating ripple:', error);
+        }
+      }
+    }
+    class NotFoundPage {
+      constructor() {
+        this.floatingAnimation = new FloatingAnimation();
+        this.particleSystem = new ParticleSystem(document.querySelector('.particles-container'));
+        this.typewriterEffect = new TypewriterEffect(
+          document.querySelector('.typewriter-text'),
+          [
+            "The page you're looking for cannot be found...",
+            "Seems lost in the digital realm?",
+            "Maybe it's on vacation in another dimension?",
+            "Let's get back on the right track!",
+            "Every developer has been here!",
+            "Don't give up – let's explore again!",
+          ],
+          80,
+          40,
+          2000
+        );
+        this.rippleEffect = new RippleEffect(document.body);
+      }
+      initialize() {
+        this.render();
+        this.setupEventListeners();
+        this.startAnimations();
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.body.classList.add('dark-mode');
+          document.querySelector('.theme-toggle').innerHTML = '☀️';
+        }
+      }
+      render() {
+        const illustration = document.querySelector('.floating-illustration');
+        illustration.innerHTML = this.createSpaceIllustration();
+        this.floatingAnimation.addElement(document.querySelector('.error-code'));
+        this.floatingAnimation.addElement(illustration);
+      }
+      setupEventListeners() {
+        const themeToggle = document.querySelector('.theme-toggle');
+        themeToggle.addEventListener('click', (event) => {
+          event.stopPropagation();
+          document.body.classList.toggle('dark-mode');
+          const isDark = document.body.classList.contains('dark-mode');
+          themeToggle.innerHTML = isDark ? '☀️' : '🌙';
+          this.rippleEffect.createRipple(event.clientX, event.clientY);
+        });
+        document.addEventListener('click', (event) => {
+          this.rippleEffect.createRipple(event.clientX, event.clientY);
+        });
+        const animatedElements = document.querySelectorAll('.action-card, .error-code, .floating-illustration');
+        animatedElements.forEach(element => {
+          DOM.onVisible(element, () => {
+            element.classList.add('animate-in');
+          });
+        });
+      }
+      startAnimations() {
+        this.floatingAnimation.start();
+        this.particleSystem.start();
+        this.typewriterEffect.start();
+      }
+      createSpaceIllustration() {
+        return `
+                    <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="spaceBg" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#0f0c29"/>
+                                <stop offset="50%" stop-color="#302b63"/>
+                                <stop offset="100%" stop-color="#24243e"/>
+                            </linearGradient>
+                            <radialGradient id="planetGradient">
+                                <stop offset="0%" stop-color="#ff9a9e"/>
+                                <stop offset="100%" stop-color="#fecfef"/>
+                            </radialGradient>
+                            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                                <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/>
+                                <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -8" result="glow"/>
+                                <feComposite in="SourceGraphic" in2="glow" operator="over"/>
+                            </filter>
+                        </defs>
+                        <rect width="600" height="400" fill="url(#spaceBg)"/>
+                        <g fill="#ffffff" opacity="0.9">
+                            ${Array.from({ length: 80 }, () => {
+          const x = Math.random() * 600;
+          const y = Math.random() * 400;
+          const size = Math.random() * 1.2 + 0.3;
+          const opacity = Math.random() * 0.8 + 0.2;
+          return `<circle cx="${x}" cy="${y}" r="${size}" opacity="${opacity}"/>`;
+        }).join('')}
+                        </g>
+                        <circle cx="450" cy="100" r="40" fill="url(#planetGradient)" filter="url(#glow)"/>
+                        <circle cx="450" cy="100" r="35" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.3"/>
+                        <g transform="translate(150, 200)" filter="url(#glow)">
+                            <path d="M -60 -80 L -40 -60 L -20 -80 L 0 -60 L 20 -80 L 40 -60 L 60 -80 L 60 60 L -60 60 Z"
+                                  fill="#e2e8f0" stroke="#cbd5e0" stroke-width="2"/>
+                            <rect x="-50" y="-70" width="100" height="20" rx="3" fill="#4a5568"/>
+                            <circle cx="-30" y="-30" r="8" fill="#4a5568"/>
+                            <circle cx="0" y="-30" r="8" fill="#4a5568"/>
+                            <circle cx="30" y="-30" r="8" fill="#4a5568"/>
+                            <rect x="-20" y="10" width="40" height="30" rx="2" fill="#4a5568"/>
+                            <path d="M -40 40 L -60 60 M 40 40 L 60 60" stroke="#4a5568" stroke-width="3"/>
+                        </g>
+                        <g transform="translate(300, 300)">
+                            <circle cx="0" cy="0" r="25" fill="#ffd700" filter="url(#glow)"/>
+                            <g transform="rotate(45)">
+                                ${Array.from({ length: 8 }, (_, i) => {
+          const angle = (i * 45 * Math.PI) / 180;
+          const length = 35;
+          const x2 = Math.cos(angle) * length;
+          const y2 = Math.sin(angle) * length;
+          return `<line x1="0" y1="0" x2="${x2}" y2="${y2}" stroke="#ffd700" stroke-width="2" opacity="0.7"/>`;
+        }).join('')}
+                            </g>
+                        </g>
+                        <text x="300" y="380" text-anchor="middle" fill="#ffffff" font-family="Arial" font-size="18" font-weight="bold" opacity="0.8">
+                            🚀 Lost in Space • 404 Not Found 🌌
+                        </text>
+                    </svg>
+                `;
+      }
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      new NotFoundPage().initialize();
+    });
+  </script>
+</body>
+</html>
