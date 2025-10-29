@@ -27,12 +27,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Build TypeScript custom script
-        working-directory: script
-        run: |
-          npm install typescript --save-dev
-          npx tsc
-
       - name: Build Sphinx documentation
         run: |
           make html
