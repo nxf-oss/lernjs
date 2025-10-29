@@ -1,0 +1,12 @@
+{
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "dev": "node esbuild.config.mjs",
+    "build": "node esbuild.config.mjs --prod && npm run typecheck"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.11",
+    "typescript": "^5.9.3"
+  }
+}

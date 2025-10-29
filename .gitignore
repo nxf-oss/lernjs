@@ -7,10 +7,12 @@ __pycache__/
 *.so
 *build/
 # Distribution / packaging
+._notes/
 .Python
 build/
 develop-eggs/
 dist/
+node_modules
 downloads/
 eggs/
 .eggs/
@@ -150,6 +152,7 @@ venv.bak/
 
 # Rope project settings
 .ropeproject
+mkfile
 
 # mkdocs documentation
 /site

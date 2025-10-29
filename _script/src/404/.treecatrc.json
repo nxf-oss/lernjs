@@ -1,0 +1,16 @@
+{
+  "version": "1.0.1",
+  "targetDir": "/home/leopard/nxf-oss/lernjs/_script/src/404",
+  "excludeGitignore": false,
+  "extensions": [],
+  "patterns": [
+    "*"
+  ],
+  "outputChoice": "json",
+  "outputFile": "",
+  "saveConfig": false,
+  "colorTheme": "default",
+  "maxFileSize": 1048576,
+  "followSymlinks": false,
+  "encoding": "utf-8"
+}
