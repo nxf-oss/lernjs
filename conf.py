@@ -26,6 +26,7 @@ extensions = [
     "sphinxext.opengraph",
     "sphinxcontrib.mermaid",
     "sphinx_git",
+    "sphinx_404_custom",
 ]
 myst_enable_extensions = [
     "colon_fence",
@@ -44,7 +45,7 @@ myst_enable_extensions = [
 ]
 myst_heading_anchors = 3
 myst_footnote_transition = True
-language = "id"
+language = "en"
 locale_dirs = ["locales/"]
 gettext_compact = False
 source_suffix = {
@@ -124,7 +125,7 @@ todo_include_todos = True
 todo_link_only = True
 github_username = "nxf-oss"
 github_repository = "lernjs"
-github_branch = "main"
+github_branch = "master"
 copybutton_prompt_text = r">>> |\.\.\. |\$ |In \[\d*\]: | {2,5}\.\.\.: | {5,8}: "
 copybutton_prompt_is_regexp = True
 ogp_site_url = "https://nxf-oss.github.io/lernjs"
