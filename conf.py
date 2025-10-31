@@ -78,7 +78,7 @@ html_theme_options = {
 }
 html_title = f"{project} v{version}"
 html_short_title = f"{project}"
-html_favicon = "_static/_favicon.svg"
+html_favicon = "_static/favicon.svg"
 html_static_path = ["_static"]
 html_js_files = [
     "index.js",
